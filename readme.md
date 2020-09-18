@@ -10,7 +10,7 @@
 
 
 /* MVP Pitch */
-This app is users to post to the internet community their drink recipe ideas and browse others creations
+This app is users to post to the internet community their drink recipe ideas and browse others creations. Through this app users will be able to view a catalog of drink recipes, including other users recipes. A user will also be able to add their favorite recipes to their user profile.
 
 
 
