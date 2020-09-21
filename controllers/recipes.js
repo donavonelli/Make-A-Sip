@@ -19,7 +19,7 @@ router.get("/new", (req, res) => {
     res.render("recipe/new");
 });
 
-// create
+// create (this adds to db)
 router.post("/", (req, res) => {
     db.Recipe.create(req.body, (error, createdRecipe) => {
         if (error) return res.send(error);
@@ -45,8 +45,13 @@ router.get("/:id/edit", (req, res) => {
     res.render("recipe/edit", context);
 });
 
-// update
-
+// update (this updates the db)
+router.put("/:id", (req, res) => {
+    db.Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedRecipe) => {
+        if (error) return res.send(error);
+    })
+    res.redirect(`/recipes/${updatedRecipe._id}`);
+});
 
 // delete
 
