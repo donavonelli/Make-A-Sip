@@ -19,6 +19,18 @@ app.set("view engine", "ejs");
 /* middleware */
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+app.use(session({
+  resave: false,
+  saveUninitialized: false,
+  secret: "fillertext",
+  store: new MongoStore({
+    url: "mongodb://localhost:27017/make-a-sip",
+  }),
+  cookie: {
+    // milliseconds
+    maxAge: 1000 * 60 * 60 * 24 * 7 *2
+  } 
+}));
 
 /* Routes */
 // Home route 

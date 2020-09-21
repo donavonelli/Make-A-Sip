@@ -24,6 +24,7 @@ router.post("/register", async (req,res)=>{
         req.body.password = hash
         await db.User.create(req.body);
         res.redirect("/myProfile")
+        console.log(req.body)
     } catch (err) {
         return res.send("Internal Service Error: ", err)
     }
@@ -35,6 +36,36 @@ router.get("/login", (req,res)=>{
 })
 
 //login authenication
+router.post("/login", async (req,res)=>{
+    try {
+        const foundUsername = await db.User.findOne({username: req.body.usernameEmail})
+        const foundEmail = await db.User.findOne({email: req.body.usernameEmail})
+        if(!foundUsername&&!foundEmail){
+            return res.send("User or Email doesn't exist")
+        }
+        const match = await bcrypt.compare(req.body.password, foundUsername.password);
+        const match2 = await bcrypt.compare(req.body.password, foundEmail.password)
+        if(!match&&!match2) {
+            return res.send("Password incorrect")
+            }
+        if(foundUsername){
+        req.session.loggedUser = {
+            username: foundUsername.username,
+            email: foundUsername.email,
+            id: foundUsername._id,
+        }
+    } else {
+        req.session.loggedUser = {
+            username: foundEmail.username,
+            email: foundEmail.email,
+            id: foundEmail._id,
+        }
+    }
+    res.redirect("/")
+    } catch (error) {
+        return res.send("Internal Service Error", error)
+    }
+})
 
 //My Profile page
 router.get("/myProfile", (req,res)=>{
