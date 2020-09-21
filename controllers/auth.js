@@ -36,7 +36,10 @@ router.get("/login", (req,res)=>{
 
 //login authenication
 
-//My
+//My Profile page
+router.get("/myProfile", (req,res)=>{
+    res.render("auth/profile")
+})
 
 
 
