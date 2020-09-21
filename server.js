@@ -30,6 +30,6 @@ app.use("/", controllers.auth)
 
 
 /* Server Listener */
-app.listen(PORT, function () {
+app.listen(PORT, () => {
   console.log(`Server is live and listening at http://localhost:${PORT}`);
 });
