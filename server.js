@@ -24,9 +24,14 @@ app.use(methodOverride("_method"));
 // Home route 
 app.get("/", (req,res)=>{
     res.render("home.ejs")
-})
-//Auth route
-app.use("/", controllers.auth)
+});
+
+// Auth route
+app.use("/", controllers.auth);
+
+// Recipe route
+app.use("/recipes", controllers.recipes);
+
 
 
 /* Server Listener */
