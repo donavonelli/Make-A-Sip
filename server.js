@@ -40,7 +40,7 @@ app.use(function (req, res, next) {
 /* Routes */
 // Landing Page route 
 app.get("/", (req,res)=>{
-    res.render("landingPage.ejs")
+  res.render("landingPage.ejs")
 })
 
 //Home page after logged in
@@ -55,8 +55,12 @@ app.use("/", controllers.auth);
 app.use("/recipes", controllers.recipes);
 
 
+// Ingredient route
+app.use("/ingredients", controllers.ingredients);
+
 //User route //use username
 app.use("/user", controllers.user)
+
 
 
 /* Server Listener */
