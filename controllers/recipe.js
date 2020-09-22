@@ -16,7 +16,14 @@ router.get("/", (req, res) => {
 
 // new form (view the new recipe form)
 router.get("/new", (req, res) => {
-    res.render("recipe/new");
+    db.Ingredient.find({}, (error, foundIngredient) => {
+        if (error) return res.send(error);
+
+        const context = {
+            ingredients: foundIngredient,
+        };
+        res.render("recipe/new", context);
+    }); 
 });
 
 // create (this adds to db)

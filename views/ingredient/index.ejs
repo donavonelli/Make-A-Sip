@@ -10,13 +10,14 @@
     <ul>
         <% ingredients.forEach(ingredient => { %>
         <li>
-            <a href="/recipes/<%= ingredient._id %>"> <%= ingredient.name %> </a>
+            <%= ingredient.name %>
+            <form action="/ingredients/<%= ingredient._id %>?_method=DELETE" method="POST">
+                <input type="submit" value="DELETE" />
+            </form>
         </li>
         <% }) %>
     </ul>
 
-    <% if(ingredients.length === 0) { %>
-    <p>There are no ingredients available yet.</p>
-    <% } %>
+    
 </body>
 </html>

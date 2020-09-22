@@ -27,7 +27,7 @@ router.post("/", (req, res) => {
     res.redirect("/ingredients");
 });
 
-// edit (view the edit recipe page)
+// edit (view the edit ingredient page)
 router.get("/:id/edit", (req, res) => {
     db.Ingredient.findById(req.params.id, (error, foundIngredient) => {
         if (error) return res.send(error);
