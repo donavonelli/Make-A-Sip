@@ -7,10 +7,10 @@
 </head>
 <body>
     <h1>Register for Make-A-Sip</h1>
-    <form action="/register">
-    <input type="text" name="username" placeholder="Type Username Here">
-    <input type="password" name="password" placeholder="Type Password Here">
-    <input type="email" name="email" placeholder="Type email here">
+    <form action="/register" method="POST">
+    <input type="text" name="username" placeholder="Type Username Here" required>
+    <input type="password" name="password" placeholder="Type Password Here" required>
+    <input type="email" name="email" placeholder="Type email here" required>
     <input type="submit" value="Register">
     </form>
 </body>
