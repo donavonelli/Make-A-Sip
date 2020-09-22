@@ -32,6 +32,8 @@ app.use("/", controllers.auth);
 // Recipe route
 app.use("/recipes", controllers.recipes);
 
+// Ingredient route
+app.use("/ingredients", controllers.ingredients);
 
 
 /* Server Listener */
