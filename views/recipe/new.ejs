@@ -6,6 +6,26 @@
     <title>Create Recipe</title>
 </head>
 <body>
-    
+    <h1>Create a New Drink Recipe</h1>
+    <form action="/recipes" method="POST">
+        <p>
+            Drink Name: <input type="text" name="name" />
+        </p>
+        <p>
+            Ingredients: <select name="ingredient"> 
+                <option defaul>Select an Ingredient</option>
+                <% ingredients.foreach(ingredient => { %>
+                <option value="<%= ingredient._id %>"><%= ingredient.name %></option>
+                <% }) %>
+            </select>
+        </p>
+        <p>
+            Special Equipment: <input type="text" name="equipment" /> Optional: <input type="checkbox" name="isOptional" />
+        </p>
+        <p>
+            Method: <textarea type="text" name="body" placeholder="Recipe Instructions"></textarea>
+        </p>
+        <input type="submit" value="Add Recipe" />  
+    </form>
 </body>
 </html>
