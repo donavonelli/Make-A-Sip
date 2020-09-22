@@ -31,14 +31,28 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24 * 7 *2
   } 
 }));
+// middleware to add user to all ejs views
+app.use(function (req, res, next) {
+  res.locals.user = req.session.loggedUser; // adds the user to all ejs views
+  next();
+});
 
 /* Routes */
-// Home route 
+// Landing Page route 
 app.get("/", (req,res)=>{
-    res.render("home.ejs")
+    res.render("landingPage.ejs")
 })
+
+//Home page after logged in
+app.get("/home", (req,res)=>{
+  res.render("home.ejs")
+})
+
 //Auth route
 app.use("/", controllers.auth)
+
+//User route //use username
+app.use("/user", controllers.user)
 
 
 /* Server Listener */

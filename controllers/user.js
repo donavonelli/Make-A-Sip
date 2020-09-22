@@ -2,13 +2,13 @@ const express = require("express")
 const router = express.Router();
 const db = require("../models")
 
-router.get("/:id", (req,res) =>{
+//My Profile page
+router.get("/myProfile", (req,res) =>{
     console.log(req.session.id)
-    db.User.findById(req.params.id, (err,foundUser)=>{
-        if(err) return err;
-        res.render("profile", {user: foundUser})
-
-    })
+    const context = {
+        user: res.locals.user,
+    }
+    res.render("profile",context)
 })
 
 module.exports = router;

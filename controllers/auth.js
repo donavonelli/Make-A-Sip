@@ -66,16 +66,12 @@ router.post("/login", async (req,res)=>{
                 id: foundEmail._id,
             }
         }
-    res.redirect("/")
+    res.redirect("/home")
     } catch (error) {
         return res.send("Internal Service Error", error)
     }
 })
 
-//My Profile page
-router.get("/myProfile", (req,res)=>{
-    res.render("auth/profile")
-})
 
 
 
