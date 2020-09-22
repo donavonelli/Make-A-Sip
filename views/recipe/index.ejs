@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+</head>
+<body>
+    <h1>Browse Drink Recipes</h1>
+    <ul>
+        <% recipes.forEach(recipe => { %>
+        <li>
+            <a href="/recipes/<%= recipe._id %>"> <%= recipe.name %> </a>
+        </li>
+        <% }) %>
+    </ul>
+
+    <% if(recipes.length === 0) { %>
+    <p>There are no recipes available yet.</p>
+    <% } %>
+</body>
+</html>

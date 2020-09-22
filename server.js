@@ -48,8 +48,12 @@ app.get("/home", (req,res)=>{
   res.render("home.ejs")
 })
 
-//Auth route
-app.use("/", controllers.auth)
+// Auth route
+app.use("/", controllers.auth);
+
+// Recipe route
+app.use("/recipes", controllers.recipes);
+
 
 //User route //use username
 app.use("/user", controllers.user)

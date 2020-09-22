@@ -4,15 +4,19 @@ const db = require("../models")
 
 //My Profile page
 router.get("/myProfile", (req,res) =>{
-    console.log(req.session.id)
     const context = {
         user: res.locals.user,
     }
-    res.render("profile",context)
+    res.render("user/profile",context)
 })
 
 //My Info Page
-
+router.get("/myProfile/myInfo", (req,res) => {
+    const context = {
+        user: res.locals.user,
+    }
+    res.render("user/myInfo", context)
+})
 //My favorite Drinks
 
 //My created drinks
