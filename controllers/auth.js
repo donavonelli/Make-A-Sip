@@ -43,24 +43,29 @@ router.post("/login", async (req,res)=>{
         if(!foundUsername&&!foundEmail){
             return res.send("User or Email doesn't exist")
         }
-        const match = await bcrypt.compare(req.body.password, foundUsername.password);
-        const match2 = await bcrypt.compare(req.body.password, foundEmail.password)
-        if(!match&&!match2) {
-            return res.send("Password incorrect")
-            }
         if(foundUsername){
-        req.session.loggedUser = {
-            username: foundUsername.username,
-            email: foundUsername.email,
-            id: foundUsername._id,
-        }
-    } else {
-        req.session.loggedUser = {
-            username: foundEmail.username,
-            email: foundEmail.email,
-            id: foundEmail._id,
+            const match = await bcrypt.compare(req.body.password, foundUsername.password);
+            if(!match) {
+                return res.send("Password incorrect")
+                }
+            req.session.loggedUser = {
+                username: foundUsername.username,
+                email: foundUsername.email,
+                id: foundUsername._id,
+            
         }
     }
+        if(foundEmail){
+            const match = await bcrypt.compare(req.body.password, foundEmail.password);
+            if(!match) {
+                return res.send("Password incorrect")
+                }
+            req.session.loggedUser = {
+                username: foundEmail.username,
+                email: foundEmail.email,
+                id: foundEmail._id,
+            }
+        }
     res.redirect("/")
     } catch (error) {
         return res.send("Internal Service Error", error)
