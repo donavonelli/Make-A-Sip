@@ -11,4 +11,13 @@ router.get("/myProfile", (req,res) =>{
     res.render("profile",context)
 })
 
+//My Info Page
+
+//My favorite Drinks
+
+//My created drinks
+
+//Create a Drink 
+
+
 module.exports = router;
