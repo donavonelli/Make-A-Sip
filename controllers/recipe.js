@@ -46,7 +46,7 @@ router.post("/", (req, res) => {
 
 // show
 router.get("/:id", (req, res) => {
-    db.Recipe.findById(req.params.id).populate("user").exec( (error, foundRecipe) => {
+    db.Recipe.findById(req.params.id).populate("user").populate("ingredients").exec( (error, foundRecipe) => {
         if (error) return res.send(error);
         const context = { recipe: foundRecipe };
         res.render("recipe/show", context);
