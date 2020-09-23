@@ -6,6 +6,13 @@
     <title>One Recipe</title>
 </head>
 <body>
-    <h1><%= oneRecipe.name %> </h1>
+    <h1><%= recipe.name %> </h1>
+    <ul>
+        Ingredients: 
+        <% recipe.ingredients.forEach(ingredient => { %>
+            <li><%= ingredient %></li>
+        <% }) %>
+        <li>Method: <%= recipe.method %></li>
+    </ul>
 </body>
 </html>
