@@ -19,22 +19,22 @@
         <p>
             Drink Name: <input type="text" name="name" />
         </p>
-    <div>
+    <div class="ingredient-container">
         <p class="ingredient">
-            Ingredients: <select name="ingredient">
-                <option default>Select an Ingredient</option>
+            Ingredients: <select name="ingredientId">
+                <option>Select an Ingredient</option>
                 <% ingredients.forEach(ingredient => { %>
                 <option value="<%= ingredient._id %>"><%= ingredient.name %></option>
                 <% }) %>
             </select>
         </p>
-        <button id="btn">Add Another Ingredient</button>
     </div>
+    <button id="btn">Add Another Ingredient</button>
         <p>
-            Special Equipment: <input type="text" name="equipment" /> Optional: <input type="checkbox" name="isOptional" />
+            <!-- Special Equipment: <input type="text" name="equipment" />  -->Optional: <input type="checkbox" name="isOptional" />
         </p>
         <p>
-            Method: <textarea type="text" name="body" placeholder="Recipe Instructions"></textarea>
+            Method: <textarea type="text" name="method" placeholder="Recipe Instructions"></textarea>
         </p>
         <input type="submit" value="Add Recipe" />  
     </form>
