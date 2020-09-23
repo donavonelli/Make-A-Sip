@@ -15,12 +15,10 @@ const recipeSchema = new mongoose.Schema(
                 ref: "Equipment",
             },
         ],
-        user: [
-            {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: "User",
-            },
-        ],
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        },
         method: String,
     },
 );

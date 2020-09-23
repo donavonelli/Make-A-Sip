@@ -6,9 +6,9 @@ const db = require("../models");
 router.get("/", (req, res) => {
     db.Recipe.find({}, (error, foundRecipes) => {
         if (error) return res.send(error);
-        console.log(foundRecipes);
         const context = {
             recipes: foundRecipes,
+            user: res.locals.user
         };
         res.render("recipe/index", context);
     });
@@ -28,11 +28,16 @@ router.get("/new", (req, res) => {
 
 // create (this adds to db)
 router.post("/", (req, res) => {
-    console.log(req.body)
+    req.body.user = req.session.loggedUser.id
     db.Recipe.create(req.body, (error, createdRecipe) => {
         if (error) return res.send(error);
+        console.log(createdRecipe)
         const ingredients = req.body.ingredientId.filter(id => id.toLowerCase() !== "select an ingredient")
         createdRecipe.ingredients.push(...ingredients)
+        // createdRecipe.user.push(res.locals.user.id)
+        console.log(res.locals.user)
+        console.log(res.locals.user.id)
+        console.log(createdRecipe.user)
         createdRecipe.save((err) => {
             res.redirect("/recipes");
         })
@@ -41,11 +46,11 @@ router.post("/", (req, res) => {
 
 // show
 router.get("/:id", (req, res) => {
-    db.Recipe.findById(req.params.id, (error, foundRecipe) => {
+    db.Recipe.findById(req.params.id).populate("user").populate("ingredients").exec( (error, foundRecipe) => {
         if (error) return res.send(error);
+        const context = { recipe: foundRecipe };
+        res.render("recipe/show", context);
     })
-    const context = { recipe: foundRecipe };
-    res.render("recipe/show", context);
 });
 
 // edit (view the edit recipe page)
