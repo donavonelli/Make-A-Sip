@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"
+        defer
+    ></script>
     <link rel="stylesheet" href="/styles/main.css">
     <script src="/scripts/app.js" defer></script>
     <title>Create Recipe</title>
@@ -13,20 +19,22 @@
         <p>
             Drink Name: <input type="text" name="name" />
         </p>
-        <p>
-            Ingredients: <select name="ingredient">
-                <option default>Select an Ingredient</option>
+    <div class="ingredient-container">
+        <p class="ingredient">
+            Ingredients: <select name="ingredientId">
+                <option>Select an Ingredient</option>
                 <% ingredients.forEach(ingredient => { %>
                 <option value="<%= ingredient._id %>"><%= ingredient.name %></option>
                 <% }) %>
             </select>
         </p>
-        <button>Add Another Ingredient</button>
+    </div>
+    <button id="btn">Add Another Ingredient</button>
         <p>
-            Special Equipment: <input type="text" name="equipment" /> Optional: <input type="checkbox" name="isOptional" />
+            <!-- Special Equipment: <input type="text" name="equipment" />  -->Optional: <input type="checkbox" name="isOptional" />
         </p>
         <p>
-            Method: <textarea type="text" name="body" placeholder="Recipe Instructions"></textarea>
+            Method: <textarea type="text" name="method" placeholder="Recipe Instructions"></textarea>
         </p>
         <input type="submit" value="Add Recipe" />  
     </form>

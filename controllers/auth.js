@@ -14,10 +14,10 @@ router.post("/register", async (req,res)=>{
         const foundEmail = await db.User.findOne({email: req.body.email});
         const foundUsername = await db.User.findOne({username: req.body.username});
         if(foundEmail){
-            return res.send("Email already registered")
+            return res.status("Email already registered")
         }
         if(foundUsername){
-            return res.send("Username already registered")
+            return res.status("Username already registered")
         }
         const salt = await bcrypt.genSalt(10)
         const hash = await bcrypt.hash(req.body.password, salt)
@@ -26,7 +26,7 @@ router.post("/register", async (req,res)=>{
         res.redirect("/myProfile")
         console.log(req.body)
     } catch (err) {
-        return res.send("Internal Service Error: ", err)
+        return res.status("Internal Service Error: ", err)
     }
 })
 

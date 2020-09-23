@@ -21,6 +21,7 @@ const recipeSchema = new mongoose.Schema(
                 ref: "User",
             },
         ],
+        method: String,
     },
 );
 

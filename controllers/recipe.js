@@ -6,7 +6,7 @@ const db = require("../models");
 router.get("/", (req, res) => {
     db.Recipe.find({}, (error, foundRecipes) => {
         if (error) return res.send(error);
-
+        console.log(foundRecipes);
         const context = {
             recipes: foundRecipes,
         };
@@ -28,10 +28,15 @@ router.get("/new", (req, res) => {
 
 // create (this adds to db)
 router.post("/", (req, res) => {
+    console.log(req.body)
     db.Recipe.create(req.body, (error, createdRecipe) => {
         if (error) return res.send(error);
+        const ingredients = req.body.ingredientId.filter(id => id.toLowerCase() !== "select an ingredient")
+        createdRecipe.ingredients.push(...ingredients)
+        createdRecipe.save((err) => {
+            res.redirect("/recipes");
+        })
     })
-    res.redirect("/recipes");
 });
 
 // show
