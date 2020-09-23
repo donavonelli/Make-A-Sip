@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"
+        defer
+    ></script>
     <link rel="stylesheet" href="/styles/main.css">
     <script src="/scripts/app.js" defer></script>
     <title>Create Recipe</title>
@@ -13,7 +19,8 @@
         <p>
             Drink Name: <input type="text" name="name" />
         </p>
-        <p>
+    <div>
+        <p class="ingredient">
             Ingredients: <select name="ingredient">
                 <option default>Select an Ingredient</option>
                 <% ingredients.forEach(ingredient => { %>
@@ -21,7 +28,8 @@
                 <% }) %>
             </select>
         </p>
-        <button>Add Another Ingredient</button>
+        <button id="btn">Add Another Ingredient</button>
+    </div>
         <p>
             Special Equipment: <input type="text" name="equipment" /> Optional: <input type="checkbox" name="isOptional" />
         </p>

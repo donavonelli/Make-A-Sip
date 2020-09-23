@@ -3,6 +3,7 @@ const express = require("express");
 const methodOverride = require("method-override");
 const session = require("express-session")
 const MongoStore = require("connect-mongo")(session)
+const path = require("path");
 
 /* Internal Modules */
 const db = require("./models");
@@ -17,8 +18,10 @@ const PORT = 3000;
 app.set("view engine", "ejs");
 
 /* middleware */
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
+
 
 /* Routes */
 // Home route 
