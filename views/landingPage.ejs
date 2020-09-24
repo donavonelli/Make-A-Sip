@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/main.css">
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css">
     <title>Home Page</title>
 </head>
 <body>
+    
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand">Make-A-Sip</a>
-        <a href="/register">Sign Up</a>
-        <a href="/login">Login</a>
+        <div class="justify-content-end">
+            <a href="/register">Sign Up</a>
+            <a href="/login">Login</a>
+        </div>
+    </nav>
+    
+    <div class="jumbotron">
+        <h1 class="display-4">hi!</h1>
+        <p>Welcome to Make-A-Sip! Sign up to create your profile page and begin building your own recipes to share with other Make-A-Sip users. Or browse our recipes by a specific ingredient to start making your own sips right now.</p>
         <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="browse" aria-label="search">
+            <input class="form-control mr-sm-2" type="search" placeholder="e.g. vodka" aria-label="search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Browse Drink Recipes</button>
         </form>
-    </nav>
-        <div class="container">
-    <h1>Home Page</h1>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
