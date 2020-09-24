@@ -23,7 +23,7 @@ router.post("/register", async (req,res)=>{
         const hash = await bcrypt.hash(req.body.password, salt)
         req.body.password = hash
         await db.User.create(req.body);
-        res.redirect("/profile")
+        res.redirect("/user/profile")
         console.log(req.body)
     } catch (err) {
         return res.status("Internal Service Error: ", err)
@@ -41,12 +41,12 @@ router.post("/login", async (req,res)=>{
         const foundUsername = await db.User.findOne({username: req.body.usernameEmail})
         const foundEmail = await db.User.findOne({email: req.body.usernameEmail})
         if(!foundUsername&&!foundEmail){
-            return res.send("User or Email doesn't exist")
+            return res.render("auth/failedLogin")
         }
         if(foundUsername){
             const match = await bcrypt.compare(req.body.password, foundUsername.password);
             if(!match) {
-                return res.send("Password incorrect")
+                return res.render("auth/failedLogin")
                 }
             req.session.loggedUser = {
                 username: foundUsername.username,
@@ -58,7 +58,7 @@ router.post("/login", async (req,res)=>{
         if(foundEmail){
             const match = await bcrypt.compare(req.body.password, foundEmail.password);
             if(!match) {
-                return res.send("Password incorrect")
+                return res.render("auth/failedLogin")
                 }
             req.session.loggedUser = {
                 username: foundEmail.username,
@@ -72,8 +72,10 @@ router.post("/login", async (req,res)=>{
     }
 })
 
-
-
-
+//Logout route
+router.delete("/logout",async (req,res)=>{
+    await req.session.destroy()
+    res.redirect("/")
+})
 
 module.exports = router;

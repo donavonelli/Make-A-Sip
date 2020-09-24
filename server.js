@@ -13,7 +13,9 @@ const controllers = require("./controllers");
 const app = express();
 
 /* Configuration */
-const PORT = 3000;
+require("dotenv").config(); //make sure its above PORT
+const PORT = process.env.PORT;
+//all use of .env
 
 app.set("view engine", "ejs");
 
@@ -24,9 +26,9 @@ app.use(methodOverride("_method"));
 app.use(session({
   resave: false,
   saveUninitialized: false,
-  secret: "fillertext",
+  secret: process.env.SECRET,
   store: new MongoStore({
-    url: "mongodb://localhost:27017/make-a-sip",
+    url: process.env.MONGODB_URI,
   }),
   cookie: {
     // milliseconds
@@ -69,6 +71,6 @@ app.use("/equipment", controllers.equipment)
 
 
 /* Server Listener */
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Server is live and listening at http://localhost:${PORT}`);
 });
