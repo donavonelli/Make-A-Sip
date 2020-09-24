@@ -27,19 +27,19 @@ router.get("/new", (req, res) => {
 });
 
 // create (this adds to db)
-router.post("/", (req, res) => {
+router.post("/",(req, res) => {
     req.body.user = req.session.loggedUser.id
-    db.Recipe.create(req.body, (error, createdRecipe) => {
+    db.Recipe.create(req.body, async (error, createdRecipe) => {
         if (error) return res.send(error);
-        console.log(createdRecipe)
         const ingredients = req.body.ingredientId.filter(id => id.toLowerCase() !== "select an ingredient")
         createdRecipe.ingredients.push(...ingredients)
-        // createdRecipe.user.push(res.locals.user.id)
-        console.log(res.locals.user)
-        console.log(res.locals.user.id)
-        console.log(createdRecipe.user)
-        createdRecipe.save((err) => {
-            res.redirect("/recipes");
+        await createdRecipe.save(async (err,recipe) => {
+            console.log("recipe:", recipe)
+            await db.User.findByIdAndUpdate(req.body.user, {$addToSet:{createdDrinks:recipe._id}}, {new:true}, (err, user) =>{
+            if (err) return res.send(error);
+            console.log(user)
+                res.redirect("/recipes");
+            })
         })
     })
 });
