@@ -29,7 +29,7 @@ router.post("/", (req, res) => {
 
 // edit (view the edit ingredient page)
 router.get("/:id/edit", (req, res) => {
-    db.Ingredient.findById(req.params.id, (error, foundIngredient) => {
+    db.Ingredient.findById(req.params.id, (error, foundIngredient) =>  {
         if (error) return res.send(error);
     })
     const context = { ingredient: foundIngredient };
