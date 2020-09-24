@@ -7,12 +7,9 @@
 </head>
 <body>
     <h1><%= recipe.name %> </h1>
-    <ul>
-        Ingredients: 
-        <% recipe.ingredients.forEach(ingredient => { %>
-            <li><%= ingredient %></li>
-        <% }) %>
-        <li>Method: <%= recipe.method %></li>
-    </ul>
+    <h3><%=recipe.user.username%></h3>
+    <%recipe.ingredients.forEach(ingredient => { %>
+        <h3><%= ingredient.name%> </h3>
+    <%})%> 
 </body>
 </html>
