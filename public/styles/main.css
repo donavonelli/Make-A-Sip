@@ -1,3 +1,14 @@
 body {
-    background: lemonchiffon;
+    
+}
+
+.jumbotron {
+    text-align: center;
+    margin: 4em;
+    
+}
+
+.container {
+    max-width: 500px;
+    padding-top: 3em; 
 }
