@@ -23,7 +23,7 @@ router.post("/register", async (req,res)=>{
         const hash = await bcrypt.hash(req.body.password, salt)
         req.body.password = hash
         await db.User.create(req.body);
-        res.redirect("/profile")
+        res.redirect("/user/profile")
         console.log(req.body)
     } catch (err) {
         return res.status("Internal Service Error: ", err)
