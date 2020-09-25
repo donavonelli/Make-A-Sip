@@ -3,9 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css">
     <title>Edit Recipe</title>
 </head>
 <body>
-    
+
+    <nav class="navbar navbar-light bg-light">
+        <% if(user){ %> 
+            <a class="navbar-brand" href="/home">Make-A-Sip</a>
+            <%} else {%>
+                <a href="/">Make-A-Sip</a>
+            <%}%> 
+        <div class="justify-content-end">
+            <a href="/register">Sign Up</a>
+            <a href="/login">Login</a>
+        </div>
+    </nav>
+
+    <div class="container">
+    <h1>Edit <%=recipe.name %></h1>
+    <form action="/recipes/<%=recipe._id%>/edit?_method=PUT" method="POST">
+        <div class="form-group row">
+            <label for="inputDrink" class="col-sm-3 col-form-label">Drink Name:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputDrink" name="name"/>
+            </div>  
+        </div>
+    <div class="ingredient-container">
+        <p class="ingredient">
+            Ingredients: <select name="ingredientId">
+                <option>Select an Ingredient</option>
+                <% ingredients.forEach(ingredient => { %>
+                <option value="<%= ingredient._id %>"><%= ingredient.name %></option>
+                <% }) %>
+            </select>
+        </p>
+    </div>
+    <button type="button" class="btn btn-light" id="btn">Add Another Ingredient</button>
+
+        <div class="form-group row">
+            <label for="inputMethod" class="col-sm-3 col-form-label">Method:</label>
+            <div class="col-sm-9">
+                <textarea class="form-control" id="inputMethod" name="method" placeholder="Recipe Instructions"></textarea>
+            </div>
+        </div>
+        Author : <%= user.username %> 
+        
+            <input type="submit" value="Edit Recipe" />
+    </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="/scripts/app.js" defer></script>
+
 </body>
 </html>
