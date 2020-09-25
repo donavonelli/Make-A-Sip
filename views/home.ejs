@@ -9,12 +9,17 @@
 </head>
 <body style="background-image: url('https://i.imgur.com/pgdSKcL.jpg')">
     <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand">Make-A-Sip</a>
+
+
+
         <a class="navbar-brand" href="/">Make-A-Sip</a>
         <div class="justify-content-end">
             <form action="/logout?_method=DELETE" method="POST">
                 <input type="submit" value="Logout"/>
             </form>
         </div>
+
     </nav>
     <div class="jumbotron">
         <h1>Welcome, <%= user.username %>!</h1>

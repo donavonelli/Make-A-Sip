@@ -4,4 +4,5 @@ module.exports = {
     equipment: require("./equipment"),
     user: require("./user"),
     ingredients: require("./ingredient",)
+    
   };
