@@ -22,11 +22,15 @@
         </div>
     </nav>
 
+    <div class="container">
     <h1>Create a New Drink Recipe</h1>
     <form action="/recipes" method="POST">
-        <p>
-            Drink Name: <input type="text" name="name" />
-        </p>
+        <div class="form-group row">
+            <label for="inputDrink" class="col-sm-3 col-form-label">Drink Name:</label>
+            <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputDrink" name="name"/>
+            </div>  
+        </div>
     <div class="ingredient-container">
         <p class="ingredient">
             Ingredients: <select name="ingredientId">
@@ -41,12 +45,16 @@
         <p>
             <!-- Special Equipment: <input type="text" name="equipment" />  Optional: <input type="checkbox" name="isOptional" />-->
         </p>
-        <p>
-            Method: <textarea type="text" name="method" placeholder="Recipe Instructions"></textarea>
-        </p>
+        <div class="form-group row">
+            <label for="inputMethod" class="col-sm-3 col-form-label">Method:</label>
+            <div class="col-sm-9">
+                <textarea class="form-control" id="inputMethod" name="method" placeholder="Recipe Instructions"></textarea>
+            </div>
+        </div>
         Author : <%= user.username %> 
         <input type="submit" value="Add Recipe" />  
     </form>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
