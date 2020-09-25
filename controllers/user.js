@@ -41,13 +41,6 @@ router.get("/profile/createdDrinks", async (req,res) => {
     })
 })
 
-//Delete a Created Drink
-// router.delete("/profile/createdDrinks/:id", async (req,res)=>{
-//     await db.Recipe.findById(req.params.id,, async (err,foundRecipe) =>{
-//         console.log(foundRecipe)
-//     })
-// })
-
 
 
 

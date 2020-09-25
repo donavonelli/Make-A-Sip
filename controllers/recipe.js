@@ -73,12 +73,12 @@ router.put("/:id", async (req, res) => {
 });
 
 // delete
-router.delete("/:id", async (req, res) => {
-    await db.Recipe.findByIdAndDelete(req.params.id, (error, deletedRecipe) => {
-        if (error) return res.send(error);
 
+router.delete("/:id", async (req, res) => {
+    await db.Recipe.findByIdAndDelete(req.params.id, async (error, deletedRecipe) => {
+        if (error) return res.send(error);
+        console.log(db.User.createdDrinks)
+        })
     })
-    res.redirect("/recipes");
-});
 
 module.exports = router;

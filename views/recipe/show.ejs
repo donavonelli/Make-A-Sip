@@ -13,8 +13,15 @@
         <h3>Ingredients: <%= ingredient.name%> </h3>
     <%})%> 
     <h3>How to Make : <%=recipe.method %></h3>
+    <% if(user){ %> 
     <form action="/recipes/<%=recipe._id %>?_method=PUT" method="POST">
         <input type="submit" value="Add to Drink Library"/>
       </form>
+      <%if(recipe.user.username === user.username){%>
+        <form action="/recipes/<%=recipe._id%>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete Recipe"/>
+        </form>
+      <%}%>
+    <% } %> 
 </body>
 </html>
