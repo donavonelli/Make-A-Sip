@@ -5,4 +5,5 @@ module.exports = {
     user: require("./user"),
     ingredients: require("./ingredient",)
     
+    
   };

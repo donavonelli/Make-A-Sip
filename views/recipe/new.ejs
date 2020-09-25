@@ -15,11 +15,11 @@
             <a class="navbar-brand" href="/home">Make-A-Sip</a>
             <%} else {%>
                 <a href="/">Make-A-Sip</a>
+                <div class="justify-content-end">
+                    <a href="/register">Sign Up</a>
+                    <a href="/login">Login</a>
+                </div>
             <%}%> 
-        <div class="justify-content-end">
-            <a href="/register">Sign Up</a>
-            <a href="/login">Login</a>
-        </div>
     </nav>
 
     <div class="container">
@@ -42,10 +42,6 @@
         </p>
     </div>
     <button type="button" class="btn btn-light" id="btn">Add Another Ingredient</button>
-        <p>
-
-            Method: <textarea type="text" name="method" placeholder="Recipe Instructions"></textarea>
-        </p>
         <div class="form-group row">
             <label for="inputMethod" class="col-sm-3 col-form-label">Method:</label>
             <div class="col-sm-9">

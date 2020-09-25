@@ -39,7 +39,7 @@ router.get("/profile/createdDrinks", async (req,res) => {
         }
         res.render("user/createdDrinks", context)
     })
-})
+}) 
 
 
 

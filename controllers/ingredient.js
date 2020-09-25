@@ -15,9 +15,9 @@ router.get("/", (req, res) => {
 });
 
 // new form (view the add new ingredient form)
-router.get("/new", (req, res) => {
+router.get("/new", (req, res) => { 
     res.render("ingredient/new");
-});
+}); 
 
 // create (this adds to db)
 router.post("/", (req, res) => {

@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
             recipes: foundRecipes,
             user: res.locals.user
         };
-        res.render("recipe/index", context);
+        res.render("recipe/index",context);
     });
 });
 
@@ -53,15 +53,28 @@ router.get("/:id", (req, res) => {
 });
 
 // edit (view the edit recipe page)
-router.get("/:id/edit", (req, res) => {
-    db.Recipe.findById(req.params.id, (error, foundRecipe) => {
+router.get("/:id/edit", async (req, res) => {
+   await db.Recipe.findById(req.params.id, async (error, foundRecipe) => {
         if (error) return res.send(error);
+        await db.Ingredient.find({}, (error, foundIngredient) => {
+            if (error) return res.send(error);
+        const context = { recipe: foundRecipe,
+        ingredients: foundIngredient};
+        res.render("recipe/edit", context);
     })
-    const context = { recipe: foundRecipe };
-    res.render("recipe/edit", context);
 });
+})
 
-// update (this updates the db)
+//update the recipe
+router.put("/:id/edit", async (req, res) => {
+    await await db.Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, user) => {
+        if (error) return res.send(error);
+        res.redirect(`/recipes`); 
+        })
+    })
+
+
+// update (this updates the drink Library)
 router.put("/:id", async (req, res) => {
     await db.Recipe.findById(req.params.id, async (err,foundRecipe) =>{
         if (err) return err;
