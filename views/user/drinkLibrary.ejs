@@ -8,7 +8,7 @@
 <body>
     <h1>Drink Library</h1>
     <% for(i=0;i < user.favoriteDrinks.length; i++){ %> 
-    <%=user.favoriteDrinks[i].name%> 
+    <a href="/recipes/<%=user.favoriteDrinks[i]._id%>"><%=user.favoriteDrinks[i].name%></a> 
     <%}%>
     <a href="/recipes">Browse More Recipes</a>
 </body>

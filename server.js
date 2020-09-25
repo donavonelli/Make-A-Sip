@@ -72,5 +72,5 @@ app.use("/equipment", controllers.equipment)
 
 /* Server Listener */
 app.listen(process.env.PORT, () => {
-  console.log(`Server is live and listening at http://localhost:${PORT}`);
+  console.log(`Server is live and listening at ${PORT}`);
 });

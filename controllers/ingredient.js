@@ -24,7 +24,7 @@ router.post("/", (req, res) => {
     db.Ingredient.create(req.body, (error, createdIngredient) => {
         if (error) return res.send(error);
     })
-    res.redirect("/ingredients");
+    res.redirect("/ingredients/new");
 });
 
 // edit (view the edit ingredient page)
