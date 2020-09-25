@@ -19,10 +19,14 @@ router.get("/profile/myInfo", (req,res) => {
 })
 //Drink Library
 router.get("/profile/drinkLibrary", async (req,res) => {
+    await db.User.findById(res.locals.user.id).populate("favoriteDrinks").exec((err, foundUser)=>{
+
         const context = {
-            recipes: foundRecipes,
-        }
+                user: foundUser,
+            }
         res.render("user/drinkLibrary", context)
+    
+    })    
     })
 
 //My created drinks
@@ -60,14 +64,6 @@ router.get("/profile/createdDrinks", async (req,res) => {
     // }
     /* res.redirect("/recipes"); */
 // });
-// show
-router.get("/:id", (req, res) => {
-    db.Recipe.findById(req.params.id, (error, foundRecipe) => {
-        if (error) return res.send(error);
-    })
-    const context = { recipe: foundRecipe };
-    res.render("recipe/show", context);
-});
 
 
 

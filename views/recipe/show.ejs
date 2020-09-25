@@ -6,10 +6,14 @@
     <title>One Recipe</title>
 </head>
 <body>
+    <a href="/recipes">Back</a>
     <h1><%= recipe.name %> </h1>
     <h3><%=recipe.user.username%></h3>
     <%recipe.ingredients.forEach(ingredient => { %>
         <h3><%= ingredient.name%> </h3>
     <%})%> 
+    <form action="/recipes/<%=recipe._id %>?_method=PUT" method="POST">
+        <input type="submit" value="Add to Drink Library"/>
+      </form>
 </body>
 </html>

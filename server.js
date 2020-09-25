@@ -64,7 +64,7 @@ app.use("/recipes", controllers.recipes);
 app.use("/ingredients", controllers.ingredients);
 
 //User route //use username
-app.use("/user", controllers.user)
+app.use("/user", controllers.user )
 
 //Add Equipment Route
 app.use("/equipment", controllers.equipment)

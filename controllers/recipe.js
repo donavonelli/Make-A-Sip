@@ -34,10 +34,8 @@ router.post("/",(req, res) => {
         const ingredients = req.body.ingredientId.filter(id => id.toLowerCase() !== "select an ingredient")
         createdRecipe.ingredients.push(...ingredients)
         await createdRecipe.save(async (err,recipe) => {
-            console.log("recipe:", recipe)
             await db.User.findByIdAndUpdate(req.body.user, {$addToSet:{createdDrinks:recipe._id}}, {new:true}, (err, user) =>{
             if (err) return res.send(error);
-            console.log(user)
                 res.redirect("/recipes");
             })
         })
@@ -63,11 +61,14 @@ router.get("/:id/edit", (req, res) => {
 });
 
 // update (this updates the db)
-router.put("/:id", (req, res) => {
-    db.Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error, updatedRecipe) => {
-        if (error) return res.send(error);
+router.put("/:id", async (req, res) => {
+    await db.Recipe.findById(req.params.id, async (err,foundRecipe) =>{
+        if (err) return err;
+        await db.User.findByIdAndUpdate(res.locals.user.id, {$addToSet:{favoriteDrinks:foundRecipe._id}}, { new: true }, (error, user) => {
+            if (error) return res.send(error);
+            res.redirect(`/user/profile/drinkLibrary`);
+        })
     })
-    res.redirect(`/recipes/${updatedRecipe._id}`);
 });
 
 // delete
