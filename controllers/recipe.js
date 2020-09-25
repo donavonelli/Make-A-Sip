@@ -46,7 +46,8 @@ router.post("/",(req, res) => {
 router.get("/:id", (req, res) => {
     db.Recipe.findById(req.params.id).populate("user").populate("ingredients").exec( (error, foundRecipe) => {
         if (error) return res.send(error);
-        const context = { recipe: foundRecipe };
+        const context = { recipe: foundRecipe,
+        user:res.locals.user };
         res.render("recipe/show", context);
     })
 });
@@ -72,11 +73,12 @@ router.put("/:id", async (req, res) => {
 });
 
 // delete
-router.delete("/:id", (req, res) => {
-    db.Recipe.findByIdAndDelete(req.params.id, (error, deletedRecipe) => {
+
+router.delete("/:id", async (req, res) => {
+    await db.Recipe.findByIdAndDelete(req.params.id, async (error, deletedRecipe) => {
         if (error) return res.send(error);
+        console.log(db.User.createdDrinks)
+        })
     })
-    res.redirect("/recipes");
-});
 
 module.exports = router;
