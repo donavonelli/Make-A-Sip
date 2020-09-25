@@ -23,15 +23,18 @@
 
     <h1>Browse Drink Recipes</h1>
         <div id="recipe-list" class="container">
-        <ul>
-            <% recipes.forEach(recipe => { %>
-                <li>
-                    <div class="card">
-                        <a href="/recipes/<%= recipe._id %>"> <%= recipe.name %> </a>
-                    </div>
-                </li>
-            <% }) %>
-        </ul>
+            <ul>
+                <% recipes.forEach(recipe => { %>
+                    <li>
+                        <div class="card">
+                            <img src="https://i.imgur.com/OMEvwDy.png" class="card-img-top">
+                            <div class="card-body">
+                        <a class ="card-title" href="/recipes/<%= recipe._id %>"> <%= recipe.name %> </a>
+                    </li>
+                    <% }) %>
+                </ul>
+            </div>
+            </div>
         <% if(recipes.length === 0) { %>
         <p>There are no recipes available yet.</p>
         <% } %>
