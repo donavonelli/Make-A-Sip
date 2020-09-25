@@ -6,6 +6,11 @@
     <title>Recipes</title>
 </head>
 <body>
+    <% if(user){ %> 
+    <a href="/home">Back to Home</a>
+    <%} else {%>
+        <a href="/">Back to Home</a>
+    <%}%> 
     <h1>Browse Drink Recipes</h1>
     <ul>
         <% recipes.forEach(recipe => { %>
