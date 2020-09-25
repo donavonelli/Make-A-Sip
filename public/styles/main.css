@@ -1,0 +1,22 @@
+.jumbotron {
+    text-align: center;
+    margin: 4em;  
+}
+
+.container {
+    max-width: 500px;
+    padding-top: 3em; 
+}
+
+li {
+    list-style: none;
+}
+
+#recipe-list {
+    display: grid;
+    grid-auto-columns: max-content;
+    grid-auto-columns: dense;
+    grid-template-columns: repeat (3, 1fr);
+    grid-gap: 25px;
+    grid-auto-rows: minmax(100px, auto);
+}

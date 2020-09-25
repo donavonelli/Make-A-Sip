@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Drinks</title>
+</head>
+<body>
+    <h1>Drink Library</h1>
+    <% for(i=0;i < user.favoriteDrinks.length; i++){ %> 
+    <a href="/recipes/<%=user.favoriteDrinks[i]._id%>"><%=user.favoriteDrinks[i].name%></a> 
+    <%}%>
+    <a href="/recipes">Browse More Recipes</a>
+</body>
+</html>
