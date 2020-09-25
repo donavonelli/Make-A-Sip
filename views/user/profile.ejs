@@ -3,13 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css">
     <title>My Profile</title>
 </head>
 <body>
-    <h1>Profile Page</h1>
+    <nav class="navbar navbar-light bg-light">
+        <% if(user){ %> 
+        <a class="navbar-brand" href="/home">Make-A-Sip</a>
+        <%} else {%>
+            <a href="/">Make-A-Sip</a>
+        <%}%> 
+        <div class="justify-content-end">
+            <form action="/logout?_method=DELETE" method="POST">
+                <input type="submit" value="Logout"/>
+            </form>
+        </div>
+    </nav>
+
+    <h1>hi, <%= user.username %>!</h1>
     <h3><a href="/user/profile/myInfo">My Info</a></h3>
     <h3><a href="/user/profile/drinkLibrary">Drink Library</a></h3>
     <h3><a href="/user/profile/createdDrinks">My Created Drinks</a></h3>
     <h3><a href="/recipes/new">Create A Drink</a></h3>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
 </body>
 </html>
