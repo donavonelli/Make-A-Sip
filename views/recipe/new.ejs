@@ -11,7 +11,11 @@
 <body>
 
     <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="/">Make-A-Sip</a>
+        <% if(user){ %> 
+            <a class="navbar-brand" href="/home">Make-A-Sip</a>
+            <%} else {%>
+                <a href="/">Make-A-Sip</a>
+            <%}%> 
         <div class="justify-content-end">
             <a href="/register">Sign Up</a>
             <a href="/login">Login</a>
@@ -35,7 +39,7 @@
     </div>
     <button type="button" class="btn btn-light" id="btn">Add Another Ingredient</button>
         <p>
-            <!-- Special Equipment: <input type="text" name="equipment" />  -->Optional: <input type="checkbox" name="isOptional" />
+            <!-- Special Equipment: <input type="text" name="equipment" />  Optional: <input type="checkbox" name="isOptional" />-->
         </p>
         <p>
             Method: <textarea type="text" name="method" placeholder="Recipe Instructions"></textarea>
